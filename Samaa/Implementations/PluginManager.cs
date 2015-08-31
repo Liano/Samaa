@@ -14,14 +14,19 @@ namespace Samaa.Implementations
     IConfiguration _configuration;
     List<Plugin> _plugins;
     IHost _host;
+    IPluginsProvider _pluginProvider;
 
-    public PluginManager(IConfiguration configuration, IHost host)
+    public PluginManager(IConfiguration configuration, IHost host
+      , IPluginsProvider pluginProvider)
     {
       if (configuration == null)
         throw new ArgumentNullException("Configuration can not be null");
 
       if (host == null)
         throw new ArgumentNullException("host");
+
+      if (pluginProvider == null)
+        throw new ArgumentNullException("pluginProvider");
 
       this._configuration = configuration;
       this._host = host;
